@@ -1,19 +1,4 @@
-# 18630937603.github.io
+# 99todo
 
-## Project setup
-```
-yarn install
-```
+自己做的一个提醒事项小网站--99todo的前端项目
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
