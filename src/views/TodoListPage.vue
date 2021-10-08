@@ -1,6 +1,14 @@
 <template>
-  <div class="todolist-page">
-    <NavBar :isHome="false" :title="'待办事项'"></NavBar>
+  <div>
+    <NavBar :title="'待办事项'" :showHelp="true">
+      <div style="margin: .1rem .2rem">
+        <h3 style="margin: 0;color: black">帮助：</h3>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;在输入框中输入内容后，pc端按回车，手机端按输入法右下角的键（可能叫前往，确定等），即可添加提醒事项</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;已添加的提醒事项单击内容即可修改</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;进行增加、修改、删除操作后，点击保存，出现保存成功字样，提醒事项才可以同步到服务器哦</p>
+        <p style="color: red">&nbsp;&nbsp;&nbsp;&nbsp;注意：请不要存储重要数据，例如银行卡账号密码等</p>
+      </div>
+    </NavBar>
     <div class="todolist-container">
       <el-input v-model="text" placeholder="写点什么吧" @keyup.enter.native="submit" clearable></el-input>
       <div class="content-container">
@@ -19,6 +27,7 @@
 <script>
 import NavBar from "@/components/NavBar";
 import TodoContent from "@/components/TodoContent";
+import {pop} from "@/utils/utils";
 
 export default {
   name: "TodoListPage",
@@ -45,7 +54,6 @@ export default {
           token: localStorage.getItem('token')
         }
       }).then(res => {
-        // console.log('todolist mounted，服务端返回数据',res.data.todolist)
         this.todo_items_list = res.data.todolist.items;
       })
     },
@@ -67,10 +75,7 @@ export default {
         items: this.todo_items_list
       }).then(res => {
         if (showMessage) {
-          this.$message({
-            message: res.data.msg,
-            type: res.data.err === 0 ? 'success' : 'error'
-          })
+          pop(res.data.msg,res.data.err===0 ? 'success' : 'error')
         }
       })
     },

@@ -7,16 +7,8 @@
   </div>
 </template>
 
-<script>
-export default {
-  mounted() {
-
-  }
-}
-</script>
-
 <style lang="less">
-//todo：怎么做到懒加载字体？
+// todo：怎么做到懒加载字体？
 @font-face {
   font-family: "hanyiwenhei";
   src: url("./assets/hanyiwenhei.ttf");

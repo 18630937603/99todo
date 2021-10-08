@@ -1,6 +1,5 @@
 <template>
-
-  <div class="register-page">
+  <div>
     <div class="register-container">
       <div class="header">
         <img class="logo" src="../assets/logo.jpeg" alt="">
@@ -23,6 +22,8 @@
 </template>
 
 <script>
+import {pop} from "@/utils/utils";
+
 export default {
   name: "RegisterPage",
   data() {
@@ -39,10 +40,7 @@ export default {
           username:this.username,
           password:this.password
         }).then( res =>{
-          this.$message({
-            message: res.data.msg,
-            type: res.data.err===0 ? 'success' : 'error'
-          })
+          pop(res.data.msg,res.data.err===0 ? 'success' : 'error')
           if(res.data.err===0){
             // 注册后直接跳转到登录页面，填好账号密码
             sessionStorage.setItem('username',this.username);
@@ -51,10 +49,7 @@ export default {
           }
         })
       }else{
-        this.$message({
-          message: '两次输入的密码不一致',
-          type: 'error'
-        })
+        pop('两次输入的密码不一致','error')
       }
     }
   }
@@ -63,58 +58,57 @@ export default {
 
 <style scoped lang="less">
 
-.register-page {
-  .register-container {
-    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
-    border: 1px solid #DCDFE6;
-    border-radius: 4px;
-    margin: 1rem .3rem;
+.register-container {
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  border: 1px solid #DCDFE6;
+  border-radius: 4px;
+  margin: 1rem .3rem;
 
 
-    .header {
+  .header {
 
-      margin-top: .3rem;
-      text-align: center;
-      font-size: .4rem;
+    margin-top: .3rem;
+    text-align: center;
+    font-size: .4rem;
 
-      .logo {
-        height: .6rem;
-        left: .3rem;
-      }
-    }
-    .input-wrap {
-      margin: .2rem .3rem;
-      .input {
-        margin-top: .2rem;
-        margin-bottom: .2rem;
-      }
-    }
-
-    .buttons {
-      text-align: center;
-      position: relative;
-      margin-bottom: .4rem;
-
-      .back-link {
-        position: absolute;
-        right: .3rem;
-        bottom: 0;
-      }
-    }
-
-    .quote {
-      margin: .5rem 0;
-      font-size: .3rem;
-      text-align: center;
-    }
-
-    .quote-author {
-      font-style: italic;
-      text-align: right;
-      color: #4f5152;
-      margin: 0 .2rem .2rem 0;
+    .logo {
+      height: .6rem;
+      left: .3rem;
     }
   }
+  .input-wrap {
+    margin: .2rem .3rem;
+    .input {
+      margin-top: .2rem;
+      margin-bottom: .2rem;
+    }
+  }
+
+  .buttons {
+    text-align: center;
+    position: relative;
+    margin-bottom: .4rem;
+
+    .back-link {
+      position: absolute;
+      right: .3rem;
+      bottom: 0;
+    }
+  }
+
+  .quote {
+    margin: .5rem 0;
+    font-size: .3rem;
+    text-align: center;
+  }
+
+  .quote-author {
+    font-style: italic;
+    text-align: right;
+    color: #4f5152;
+    margin: 0 .2rem .2rem 0;
+  }
 }
+
 
 </style>

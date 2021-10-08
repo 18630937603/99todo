@@ -32,7 +32,7 @@ export default {
     flex-direction: column;
     align-items: center;
     padding: .3rem 0;
-    border: 1px solid black;
+    border: 1px solid #DCDFE6;
     border-radius: .2rem;
 
     #icon {
@@ -40,6 +40,7 @@ export default {
     }
 
     .title{
+      margin: .05rem 0;
       font-size: .3rem;
       font-weight: bold;
     }

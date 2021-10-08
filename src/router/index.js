@@ -4,7 +4,9 @@ import LoginPage from "@/views/LoginPage";
 import RegisterPage from "@/views/RegisterPage";
 import HomePage from "@/views/HomePage";
 import TodoListPage from "@/views/TodoListPage";
-import { Message } from "element-ui";
+import AboutPage from "@/views/AboutPage";
+
+import { verifyToken } from "@/utils/utils";
 
 //解决vue路由重复导航错误
 //获取原型对象上的push函数
@@ -33,6 +35,10 @@ const routes = [
   {
     path: '/todolist',
     component: TodoListPage,
+  },
+  {
+    path: '/about',
+    component: AboutPage
   }
 ]
 
@@ -40,6 +46,7 @@ const router = new VueRouter({
   routes
 })
 
+// 全局路由守卫，作用是在没有登录的时候访问其他页面自动跳转到登录
 // 若没有token，回到登录页面
 router.beforeEach((to, from, next) => {
   //to 要去的路由配置
@@ -47,12 +54,17 @@ router.beforeEach((to, from, next) => {
 
   if (to.path === '/login' || to.path === '/register') return next();
   const token = localStorage.getItem('token');
-  if (token) return next();
-  Message({
-    message: '请先登录！',
-    type: "warning"
-  })
-  router.push('/login')
+  if (token) {
+    next();
+    verifyToken().then(r => {
+      if(r.data.err!==0){
+        localStorage.removeItem('token')
+        router.replace('/login')
+      }
+    })
+  }else{
+    router.replace('/login')
+  }
 });
 
 
