@@ -11,7 +11,7 @@
       <div class="login">
         <el-button class="login-button" @click="login">登录</el-button>
         <router-link class="register-link" to="/register">注册</router-link>
-
+        <router-link class="changepwd-link" to="/changepwd">修改密码</router-link>
       </div>
       <div class="quote">耽误太多时间，事情可就做不完了</div>
       <div class="quote-author">-- 玉衡星 刻晴</div>
@@ -34,6 +34,7 @@ export default {
   // todo:methods第二个初始化为什么可以调用data的数据？
   methods: {
     login() {
+      localStorage.removeItem('token')
       this.$axios.post('/login',{
         username:this.username,
         password:this.password
@@ -89,6 +90,11 @@ export default {
     text-align: center;
     position: relative;
     .register-link {
+      position: absolute;
+      right: .3rem;
+      bottom: .4rem;
+    }
+    .changepwd-link {
       position: absolute;
       right: .3rem;
       bottom: 0;

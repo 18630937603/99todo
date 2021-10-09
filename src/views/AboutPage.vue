@@ -8,6 +8,7 @@
       <p>&nbsp;&nbsp;&nbsp;&nbsp;我叫刘志昊，来自南开大学软件工程专业二学位班</p>
       <p>&nbsp;&nbsp;&nbsp;&nbsp;为了解决手机提醒事项app不能跨iOS、Mac和Windows同步的问题，顺便学习编程，99todo在2021.10.6上线啦～</p>
       <p>&nbsp;&nbsp;&nbsp;&nbsp;本项目前端使用Vue+element-ui搭建，后端使用nodejs+koa2+MongoDB</p>
+      <p>&nbsp;&nbsp;&nbsp;&nbsp;源码地址：github.com/18630937603</p>
       <h3>更新日志：</h3>
       <div style="white-space: pre-wrap">
         <p>{{ change_log }}</p>
@@ -30,12 +31,17 @@ export default {
   data() {
     return {
       change_log: `
+v1.0.2，2021.10.9
+
+    增加了修改密码功能
+    修复移动端按钮不靠右的bug
+    限制了最大宽度，改进了pc端浏览体验
+
 v1.0.1，2021.10.8
 
-    增加备案号
     将消息提示位置改为右下角，避免遮挡导航条按钮
     增加了登出功能
-    增加了关于页面
+    增加了关于页面和页脚
     加入了todolist的使用帮助
 
     代码相关：

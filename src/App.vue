@@ -19,6 +19,8 @@ body {
   font-family: "hanyiwenhei","Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
   font-size: .25rem;
   box-sizing: border-box;
+  min-width: 350px;
+  max-width: 500px;
 }
 
 #cover {

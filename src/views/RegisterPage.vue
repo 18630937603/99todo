@@ -14,7 +14,7 @@
         <el-input class="input" v-model="password2" placeholder="再次输入密码" show-password></el-input>
       </div>
       <div class="buttons">
-        <el-button class="register-button" @click="register">注册</el-button>
+        <el-button @click="register">注册</el-button>
         <router-link class="back-link" to="/login">返回</router-link>
       </div>
     </div>
@@ -94,19 +94,6 @@ export default {
       right: .3rem;
       bottom: 0;
     }
-  }
-
-  .quote {
-    margin: .5rem 0;
-    font-size: .3rem;
-    text-align: center;
-  }
-
-  .quote-author {
-    font-style: italic;
-    text-align: right;
-    color: #4f5152;
-    margin: 0 .2rem .2rem 0;
   }
 }
 

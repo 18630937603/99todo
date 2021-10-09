@@ -63,8 +63,9 @@ export default {
 .nav-bar-container {
   display: flex;
   align-items: center;
-  padding: .1rem .2rem;
+  margin: .1rem .2rem;
   min-height: .7rem;
+  position: relative;
 
   .logo {
     height: .5rem;
@@ -77,10 +78,8 @@ export default {
   }
 
   .popover-icons {
-    flex: 1;
-    display: flex;
-    justify-content: right;
-    align-items: center;
+    position: absolute;
+    right: 0;
 
     .icon {
       margin-left: .1rem;

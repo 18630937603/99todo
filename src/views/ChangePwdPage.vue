@@ -1,0 +1,106 @@
+<template>
+  <div>
+    <div class="changepwd-container">
+      <div class="header">
+        <img class="logo" src="../assets/logo.jpeg" alt="">
+      </div>
+      <div class="input-wrap">
+        <el-input class="input" v-model="username" placeholder="用户名"></el-input>
+        <el-input class="input" v-model="password" placeholder="原密码" show-password></el-input>
+        <el-tooltip class="item" effect="dark" content="密码格式：8-16字节，必须包含大小写字母、数字，可以使用特殊字符" placement="top-start">
+          <el-input class="input" v-model="new_password" placeholder="新密码" show-password></el-input>
+        </el-tooltip>
+        <el-input class="input" v-model="new_password2" placeholder="再次输入新密码" show-password></el-input>
+      </div>
+      <div class="buttons">
+        <el-button @click="changepwd">确认修改</el-button>
+        <router-link class="back-link" to="/login">返回</router-link>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import {pop} from "@/utils/utils";
+
+export default {
+  name: "ChangePwdPage",
+  data() {
+    return {
+      username:"",
+      password:"",
+      new_password:"",
+      new_password2:""
+    }
+  },
+  methods: {
+    changepwd() {
+      if(this.new_password===this.new_password2){
+        if(this.password!==this.new_password){
+          this.$axios.post('/changepwd',{
+            username:this.username,
+            password:this.password,
+            new_password:this.new_password
+          }).then( res =>{
+            pop(res.data.msg,res.data.err===0 ? 'success' : 'error')
+            if(res.data.err===0){
+              // 修改后直接跳转到登录页面，填好账号密码
+              sessionStorage.setItem('username',this.username);
+              sessionStorage.setItem('password',this.new_password)
+              this.$router.push('./login')
+            }
+          })
+        }else{
+          pop('旧密码与原密码相同，无需修改','warning')
+        }
+      }else{
+        pop('两次输入的新密码不一致','error')
+      }
+    }
+  }
+}
+</script>
+
+<style scoped lang="less">
+
+.changepwd-container {
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  border: 1px solid #DCDFE6;
+  border-radius: 4px;
+  margin: 1rem .3rem;
+
+
+  .header {
+
+    margin-top: .3rem;
+    text-align: center;
+    font-size: .4rem;
+
+    .logo {
+      height: .6rem;
+      left: .3rem;
+    }
+  }
+  .input-wrap {
+    margin: .2rem .3rem;
+    .input {
+      margin-top: .2rem;
+      margin-bottom: .2rem;
+    }
+  }
+
+  .buttons {
+    text-align: center;
+    position: relative;
+    margin-bottom: .4rem;
+
+    .back-link {
+      position: absolute;
+      right: .3rem;
+      bottom: 0;
+    }
+  }
+}
+
+
+</style>

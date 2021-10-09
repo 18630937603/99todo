@@ -24,6 +24,13 @@ function pop(message,type) {
             duration: 2500,
             position: 'bottom-right'
         })
+    }else if(type==='warning'){
+        Notification({
+            message: message,
+            duration: 2500,
+            position: 'bottom-right',
+            type: 'warning'
+        })
     }else{
         Notification({
             message: message,

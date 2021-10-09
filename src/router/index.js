@@ -5,6 +5,7 @@ import RegisterPage from "@/views/RegisterPage";
 import HomePage from "@/views/HomePage";
 import TodoListPage from "@/views/TodoListPage";
 import AboutPage from "@/views/AboutPage";
+import ChangePwdPage from "@/views/ChangePwdPage";
 
 import { verifyToken } from "@/utils/utils";
 
@@ -39,6 +40,10 @@ const routes = [
   {
     path: '/about',
     component: AboutPage
+  },
+  {
+    path: '/changepwd',
+    component: ChangePwdPage
   }
 ]
 
@@ -52,7 +57,7 @@ router.beforeEach((to, from, next) => {
   //to 要去的路由配置
   //from 当前的路由配置
 
-  if (to.path === '/login' || to.path === '/register') return next();
+  if (to.path === '/login' || to.path === '/register' || to.path === '/changepwd') return next();
   const token = localStorage.getItem('token');
   if (token) {
     next();
