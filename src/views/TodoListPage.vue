@@ -15,7 +15,7 @@
       <el-input v-model="text" placeholder="写点什么吧" @keyup.enter.native="submit" clearable></el-input>
       <div class="content-container">
         <div v-for="(item,index) in todo_items_list" :key="index">
-          <TodoContent :item.sync="item" :blur-event="save"></TodoContent>
+          <TodoContent :item.sync="item" @blur-event="save"></TodoContent>
         </div>
       </div>
       <div class="buttons">
