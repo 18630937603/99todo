@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Notification } from "element-ui";
 
+// 向服务器发起验证token请求，返回一个Promise
 async function verifyToken() {
     let token = localStorage.getItem('token')
     if(token) {
@@ -10,6 +11,7 @@ async function verifyToken() {
     }
 }
 
+// 封装弹框消息
 function pop(message,type) {
     if(type==='success'){
         Notification({

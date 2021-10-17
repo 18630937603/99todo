@@ -13,7 +13,6 @@
       <div style="white-space: pre-wrap">
         <p>{{ change_log }}</p>
       </div>
-
     </div>
   </PageWithFooter>
 </template>
@@ -31,8 +30,15 @@ export default {
   data() {
     return {
       change_log: `
+
+v1.1，2021.10.17
+
+    todolist现在会自动保存并同步到服务器
+    todolist现在可以实时更新到多开的其他窗口
+
 v1.0.2，2021.10.9
 
+    增加了全选按钮
     增加了修改密码功能
     修复移动端按钮不靠右的bug
     限制了最大宽度，改进了pc端浏览体验

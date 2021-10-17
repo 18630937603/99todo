@@ -8,13 +8,16 @@ import axios from "axios";
 
 Vue.config.productionTip = false
 
+
+const baseURL = "192.168.0.103:8081"  // 开发环境
+// const baseURL = "localhost:8081"  // 开发环境
+// const baseURL = "www.lzh0129.top:8081"  // 生产环境
+
 Vue.prototype.$axios = axios
-// axios.defaults.baseURL='http://localhost:8081' // 开发环境
-// axios.defaults.baseURL='http://172.24.152.116:8081' // 开发环境
-axios.defaults.baseURL='http://www.lzh0129.top:8081' // 生产环境
+Vue.prototype.$baseURL = baseURL
+axios.defaults.baseURL=`http://${baseURL}`
 
 Vue.use(ElementUI)
-
 
 
 new Vue({
@@ -23,12 +26,12 @@ new Vue({
   render: h => h(App)
 }).$mount('#app')
 
+
+
 // rem适配
 // todo:设备方向改变了怎么办？
-
 const MIN_WIDTH = 350;
 const MAX_WIDTH = 500;
-
 function recalculate() {
   let clientWid = document.documentElement.clientWidth;
   if(clientWid > MAX_WIDTH) {

@@ -5,10 +5,17 @@
       <div v-if="isHome" class="title">功能列表</div>
       <el-page-header v-if="!isHome" class="navbar-header" @back="gotoHome" :content="this.title"></el-page-header>
       <div class="popover-icons">
-        <el-popover v-if="showHelp">
-          <slot></slot>
+        <!--当help具名插槽插入内容时显示-->
+        <el-popover v-if="Object.keys($slots).includes('help')">
+          <slot name="help"></slot>
           <i class="el-icon-question icon" slot="reference"></i>
         </el-popover>
+        <!--当option具名插槽插入内容时显示-->
+        <el-popover v-if="Object.keys($slots).includes('option')">
+          <slot name="option"></slot>
+          <i class="el-icon-s-tools icon" slot="reference"></i>
+        </el-popover>
+        <!--用户按钮，均显示-->
         <el-popover>
           <div>当前用户：</div>
           <div>{{ username }}</div>
@@ -29,10 +36,6 @@ export default {
   props: {
     title: String,
     isHome: {
-      type: Boolean,
-      default: false
-    },
-    showHelp: {
       type: Boolean,
       default: false
     }

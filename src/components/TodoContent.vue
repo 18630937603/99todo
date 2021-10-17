@@ -1,6 +1,6 @@
 <template>
   <div class="todo-content">
-    <el-input class="text" v-model="item.content" type="textarea" autosize></el-input>
+    <el-input class="text" v-model="item.content" type="textarea" autosize @blur="blurEvent"></el-input>
     <el-checkbox v-model="item.checked"></el-checkbox>
   </div>
 </template>
@@ -8,7 +8,7 @@
 <script>
 export default {
   name: "TodoContent",
-  props: ['item']
+  props: ['item','blurEvent']
 }
 </script>
 
