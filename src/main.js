@@ -10,8 +10,8 @@ Vue.config.productionTip = false
 
 
 // const baseURL = "192.168.0.103:8081"  // 开发环境
-const baseURL = "localhost:8081"  // 开发环境
-// const baseURL = "www.lzh0129.top:8081"  // 生产环境
+// const baseURL = "localhost:8081"  // 开发环境
+const baseURL = "www.lzh0129.top:8081"  // 生产环境
 
 Vue.prototype.$axios = axios
 Vue.prototype.$baseURL = baseURL
