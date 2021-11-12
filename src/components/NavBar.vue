@@ -66,7 +66,7 @@ export default {
 .nav-bar-container {
   display: flex;
   align-items: center;
-  margin: .1rem .2rem;
+  padding: .1rem .2rem;
   min-height: .7rem;
   position: relative;
 
@@ -82,7 +82,7 @@ export default {
 
   .popover-icons {
     position: absolute;
-    right: 0;
+    right: .2rem;
 
     .icon {
       margin-left: .1rem;
